@@ -4,7 +4,7 @@ import {
   PiTrashBold,
 } from "react-icons/pi";
 
-function DisplaySelectedResume({ selectedFile, onSetSelectFile }) {
+function DisplaySelectedResume({ selectedFile, onSetSelectFile, isPending }) {
   const { name: fileName, size: fileSize } = selectedFile;
 
   return (
@@ -27,7 +27,8 @@ function DisplaySelectedResume({ selectedFile, onSetSelectFile }) {
 
         <div className="flex items-center gap-2">
           <button
-            className="p-2 hover:bg-emerald-100 text-emerald-700 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer"
+            className="p-2 hover:bg-emerald-100 text-emerald-700 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-transparent"
+            disabled={isPending}
             onClick={() => onSetSelectFile(null)}
           >
             <PiArrowClockwiseBold size={18} />
@@ -37,7 +38,8 @@ function DisplaySelectedResume({ selectedFile, onSetSelectFile }) {
           <div className="w-px h-6 bg-emerald-200 mx-1" />
 
           <button
-            className="p-2 hover:bg-red-50 text-orange-400 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer"
+            className="p-2 hover:bg-red-50 text-orange-400 rounded-lg transition-colors flex items-center gap-1 text-xs font-bold cursor-pointer disabled:cursor-not-allowed disabled:hover:bg-transparent"
+            disabled={isPending}
             onClick={() => onSetSelectFile(null)}
           >
             <PiTrashBold size={18} />

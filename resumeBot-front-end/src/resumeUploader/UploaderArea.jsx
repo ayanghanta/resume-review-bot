@@ -2,7 +2,7 @@ import { useDropzone } from "react-dropzone";
 import { PiCloudArrowUpBold } from "react-icons/pi";
 import DisplaySelectedResume from "./DisplaySelectedResume";
 
-function UploaderArea({ selectedFile, onSetSelectFile }) {
+function UploaderArea({ selectedFile, onSetSelectFile, isPending }) {
   function onDrop(acceptedFiles) {
     const file = acceptedFiles[0];
 
@@ -21,6 +21,7 @@ function UploaderArea({ selectedFile, onSetSelectFile }) {
     <DisplaySelectedResume
       selectedFile={selectedFile}
       onSetSelectFile={onSetSelectFile}
+      isPending={isPending}
     />
   ) : (
     <div

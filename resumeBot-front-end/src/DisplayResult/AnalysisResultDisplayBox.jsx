@@ -40,7 +40,7 @@ function scoreColor(score) {
   return "text-red-500";
 }
 
-function AnalysisResultDisplayBox() {
+function AnalysisResultDisplayBox({ analyzeData }) {
   return (
     <div className="bg-white border border-emerald-50 rounded-xl shadow-xl shadow-emerald-900/5 overflow-hidden">
       <div className="bg-emerald-950 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -51,7 +51,7 @@ function AnalysisResultDisplayBox() {
               Analysis Results
             </h2>
             <p className="text-emerald-400/60 text-xs mt-1">
-              Powered by RevResume AI
+              Powered by ResumeBot AI
             </p>
           </div>
         </div>
@@ -60,9 +60,9 @@ function AnalysisResultDisplayBox() {
           <PiChartBarBold className="text-emerald-300 text-xl" />
           <div className="text-white">
             <span
-              className={`${scoreColor(DUMMY_REVIEW.overall_score)} text-2xl font-black`}
+              className={`${scoreColor(analyzeData.overall_score)} text-2xl font-black`}
             >
-              {DUMMY_REVIEW.overall_score}
+              {analyzeData.overall_score}
             </span>
             <span className="text-lg font-medium text-emerald-600">/10</span>
           </div>
@@ -70,12 +70,12 @@ function AnalysisResultDisplayBox() {
       </div>
 
       <div className="p-8 space-y-10">
-        <ReviewSymmaryDisplay summary={DUMMY_REVIEW.summary} />
+        <ReviewSymmaryDisplay summary={analyzeData.summary} />
 
         <div className="grid md:grid-cols-2 gap-10">
-          <DisplayStrengths strengths={DUMMY_REVIEW.strengths} />
+          <DisplayStrengths strengths={analyzeData.strengths} />
 
-          <DisplayImprovements improvements={DUMMY_REVIEW.weaknesses} />
+          <DisplayImprovements improvements={analyzeData.weaknesses} />
         </div>
       </div>
     </div>
