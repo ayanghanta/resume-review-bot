@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 // CORS
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: process.env.ALLOWED_DOMINS.split(","),
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
